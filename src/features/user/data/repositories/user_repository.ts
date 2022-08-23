@@ -8,7 +8,10 @@ import UserModel from "../models/interfaces/user";
 
 interface UserRepository {
   getDistributors(): Promise<UserModel[]>;
-  getRetailers(distributorId: string): Promise<UserModel[]>;
+  getDistributorById(id: String): Promise<UserModel>;
+  getRetailers(distributor: UserModel): Promise<UserModel[]>;
+  updateUser(user: UserModel): Promise<UserModel>;
+  deleteUser(id: string): Promise<MessageResponse>;
 }
 
 export default UserRepository;

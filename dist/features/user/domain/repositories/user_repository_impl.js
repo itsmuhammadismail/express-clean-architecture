@@ -24,10 +24,28 @@ class UserRepositoryImpl {
             return yield this.userDataSource.getAllDistributors();
         });
     }
-    getRetailers(distributorId) {
+    getDistributorById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            // await dis
-            throw yield new Error("Method not implemented.");
+            return yield this.userDataSource.getDistributorById(id);
+        });
+    }
+    getRetailers(distributor) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.userDataSource.getAllRetailers(distributor);
+        });
+    }
+    updateUser(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.userDataSource.updateUser(user);
+        });
+    }
+    deleteUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.userDataSource.deleteUser(id);
+            const response = {
+                message: "User deleted successfully",
+            };
+            return response;
         });
     }
 }

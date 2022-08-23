@@ -48,7 +48,6 @@ class AuthDataSource implements AuthDS {
   ): Promise<void> {
     const newUser = await User.create({
       username: user.username,
-      constact: user.contact,
       country: user.country,
       contact: user.contact,
       role: role,
@@ -64,7 +63,7 @@ class AuthDataSource implements AuthDS {
     const userbyid = await User.findOne({}, {}, { sort: { createdAt: -1 } });
     let userId: number = 1000;
     if (userbyid) {
-      userId = +userbyid.user_id + 1;
+      userId = +userbyid.user_id! + 1;
     }
     return userId;
   }

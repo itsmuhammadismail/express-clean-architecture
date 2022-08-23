@@ -15,7 +15,7 @@ export default function authRouter(
   );
 
   router.post("/register", protect, async (req: Request, res: Response) => {
-    res.status(200).json(await registerUseCase.call(req));
+    res.status(201).json(await registerUseCase.call(req));
   });
 
   return router;

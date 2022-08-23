@@ -2,6 +2,7 @@ import UserDataSource from "../../data/data_sources/user_data_source";
 import UserMapper from "../../data/mapper/user_mapper";
 import UserModel from "../../data/models/interfaces/user";
 import UserRepository from "../../data/repositories/user_repository";
+import { MessageResponse } from "../entities/message";
 
 class UserRepositoryImpl implements UserRepository {
   userDataSource: UserDataSource;
@@ -14,9 +15,25 @@ class UserRepositoryImpl implements UserRepository {
   async getDistributors(): Promise<UserModel[]> {
     return await this.userDataSource.getAllDistributors();
   }
-  async getRetailers(distributorId: string): Promise<UserModel[]> {
-    // await dis
-    throw await new Error("Method not implemented.");
+
+  async getDistributorById(id: string): Promise<UserModel> {
+    return await this.userDataSource.getDistributorById(id);
+  }
+
+  async getRetailers(distributor: UserModel): Promise<UserModel[]> {
+    return await this.userDataSource.getAllRetailers(distributor);
+  }
+
+  async updateUser(user: UserModel): Promise<UserModel> {
+      return await this.userDataSource.updateUser(user);
+  }
+
+  async deleteUser(id: string): Promise<MessageResponse> {
+    await this.userDataSource.deleteUser(id);
+    const response: MessageResponse = {
+      message: "User deleted successfully",
+    };
+    return response;
   }
 }
 

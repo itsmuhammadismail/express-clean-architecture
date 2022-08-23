@@ -53,7 +53,6 @@ class AuthDataSource {
         return __awaiter(this, void 0, void 0, function* () {
             const newUser = yield user_model_1.default.create({
                 username: user.username,
-                constact: user.contact,
                 country: user.country,
                 contact: user.contact,
                 role: role,

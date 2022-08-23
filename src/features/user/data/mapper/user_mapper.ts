@@ -10,14 +10,14 @@ class UserMapper implements Mapper<LoginUserResponse, UserModel> {
     const user: LoginUserResponse = {
       token: token,
       _id: model._id,
-      user_id: model.user_id,
+      user_id: model.user_id!,
       displayname: model.displayname,
       username: model.username,
       contact: model.contact,
       country: model.country,
       role: model.role,
       state: model.state,
-      amount: model.amount,
+      amount: model.amount!,
     };
 
     return user;

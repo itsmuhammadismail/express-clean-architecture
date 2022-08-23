@@ -12,7 +12,6 @@ class RegisterUseCase implements UseCase<MessageResponse, Request> {
   }
 
   async call(params: Request): Promise<MessageResponse> {
-    const token: string | undefined = params.headers.authorization?.split(" ")[1];
     const authUser: UserModel | null = params.user;
     const result = await this.authRepository.register(params.body, authUser);
     return result;

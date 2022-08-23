@@ -18,9 +18,7 @@ class RegisterUseCase {
         this.authRepository = new auth_repository_impl_1.default();
     }
     call(params) {
-        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            const token = (_a = params.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
             const authUser = params.user;
             const result = yield this.authRepository.register(params.body, authUser);
             return result;
